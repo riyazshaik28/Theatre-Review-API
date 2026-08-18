@@ -1,4 +1,17 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
+from database import create_table
+
+
+
+@asynccontextmanager
+async def lifespan(app:FastAPI):
+    create_table()
+    print("database tables created")
+    yield
+    print("shutting down the app")
+
+
 app=FastAPI(
     title="Theatre Review API",
     description=(
@@ -7,8 +20,8 @@ app=FastAPI(
     ),
      docs_url="/docs",
         redoc_url="/redoc",
-        openapi_url="/openapi.json"
-    
+        openapi_url="/openapi.json",
+    lifespan=lifespan
 )
 
    
