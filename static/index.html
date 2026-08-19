@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theatre Review Hub</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="topbar">
+        <div>
+            <p class="eyebrow">Audience feedback</p>
+            <h1>Theatre Review Hub</h1>
+        </div>
+        <button id="refreshButton" class="primary-btn">Refresh reviews</button>
+    </header>
+
+    <main class="layout">
+        <section class="panel form-panel">
+            <h2 id="formHeading">Submit a review</h2>
+            <form id="reviewForm">
+                <input id="reviewId" name="reviewId" type="hidden">
+                <label>Play name
+                    <input name="play_name" type="text" placeholder="Romeo & Juliet" required>
+                </label>
+                <label>Reviewer name
+                    <input name="reviewer_name" type="text" placeholder="Aisha" required>
+                </label>
+                <label>Rating
+                    <select name="rating">
+                        <option value="5">5 - Excellent</option>
+                        <option value="4">4 - Very good</option>
+                        <option value="3">3 - Good</option>
+                        <option value="2">2 - Fair</option>
+                        <option value="1">1 - Poor</option>
+                    </select>
+                </label>
+                <label>Comment
+                    <textarea name="comment" rows="4" placeholder="Tell us about your experience..." required></textarea>
+                </label>
+                <div class="form-actions">
+                    <button id="submitReviewButton" type="submit" class="primary-btn">Add review</button>
+                    <button id="cancelEditButton" type="button" class="secondary-btn hidden">Cancel edit</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel stats-panel">
+            <h2>Play overview</h2>
+            <div id="summaryContainer" class="summary-list"></div>
+        </section>
+    </main>
+
+    <section class="panel filters-panel">
+        <h2>Browse reviews</h2>
+        <div class="filters">
+            <input id="searchInput" type="text" placeholder="Search play or comment...">
+            <select id="playFilter">
+                <option value="">All plays</option>
+            </select>
+            <select id="sortBy">
+                <option value="newest">Newest first</option>
+                <option value="oldest">Oldest first</option>
+                <option value="highest">Highest rating</option>
+                <option value="lowest">Lowest rating</option>
+            </select>
+        </div>
+        <div id="reviewList" class="review-list"></div>
+    </section>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

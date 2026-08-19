@@ -9,7 +9,7 @@ def create_table():
     print("Creating tables...")
     SQLModel.metadata.create_all(engine)
     print("Tables created")
-    
+
 def get_session():
     """Dependency that provides a database session per request"""
     

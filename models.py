@@ -13,10 +13,10 @@ class Review(SQLModel, table=True):
 
 
 class ReviewCreate(SQLModel):
-    play_name: str
-    reviewer_name: str
+    play_name: str = Field(min_length=1)
+    reviewer_name: str = Field(min_length=1)
     rating: int = Field(ge=1, le=5)
-    comment: str
+    comment: str = Field(min_length=1)
 
 
 class ReviewRead(SQLModel):
@@ -29,5 +29,7 @@ class ReviewRead(SQLModel):
 
 
 class ReviewUpdate(SQLModel):
+    play_name: Optional[str] = Field(default=None, min_length=1)
+    reviewer_name: Optional[str] = Field(default=None, min_length=1)
     rating: Optional[int] = Field(default=None, ge=1, le=5)
-    comment: Optional[str] = None
+    comment: Optional[str] = Field(default=None, min_length=1)
